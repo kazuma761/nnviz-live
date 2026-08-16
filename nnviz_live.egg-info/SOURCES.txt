@@ -1,4 +1,5 @@
 LICENSE
+README.md
 pyproject.toml
 nnviz/__init__.py
 nnviz/renderer.py

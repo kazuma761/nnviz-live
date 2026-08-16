@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "nnviz-live"
-version = "0.1.0"
-description = "Live neural-network training visualiser for PyTorch"
+version = "0.1.1"
+description = "Watch a PyTorch model learn in real time: a live pygame window showing weights, activations, predictions, and loss as your network trains"
 readme = "README.md"
 requires-python = ">=3.8"
 license = "MIT"
