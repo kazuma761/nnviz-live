@@ -1,0 +1,32 @@
+Metadata-Version: 2.4
+Name: nnviz-live
+Version: 0.1.0
+Summary: Live neural-network training visualiser for PyTorch
+Author-email: Shriraj <shrirajkun@gmail.com>
+License-Expression: MIT
+Project-URL: Homepage, https://github.com/kazuma761/nnviz-live
+Project-URL: Repository, https://github.com/kazuma761/nnviz-live
+Project-URL: Issues, https://github.com/kazuma761/nnviz-live/issues
+Keywords: pytorch,neural-network,visualization,deep-learning,training,pygame
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: Science/Research
+Classifier: Topic :: Scientific/Engineering :: Artificial Intelligence
+Classifier: Topic :: Scientific/Engineering :: Visualization
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: torch>=1.10
+Requires-Dist: numpy>=1.21
+Requires-Dist: pygame>=2.1
+Provides-Extra: examples
+Requires-Dist: pandas>=1.3; extra == "examples"
+Requires-Dist: scikit-learn>=1.0; extra == "examples"
+Dynamic: license-file
