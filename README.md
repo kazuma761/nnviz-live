@@ -11,7 +11,7 @@ see predictions change, and understand what your network is learning — frame b
 
 *Multi-class text classification — watch the network weigh evidence toward each label in real time.*
 
-![nnviz demo — regression style output](docs/demo-screenshot.png)
+![nnviz demo — regression style output](docs/demo-screensho1.png)
 
 *Same visualiser, different task — severity classification with live confidence bars.*
 
@@ -124,16 +124,7 @@ viz.run(model, your_loader, criterion, optimizer)
 | Binary classification | ✅ | Use 2 output neurons + CrossEntropyLoss |
 | Regression | ⚠️ | Renders, but accuracy stats won't be meaningful |
 
----
 
-## Examples
-
-```bash
-python examples/mnist_example.py   # MNIST digits, image grid
-python examples/iris_example.py    # Iris flowers, tabular
-```
-
----
 
 ## Roadmap
 
