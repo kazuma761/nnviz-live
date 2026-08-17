@@ -1,20 +1,35 @@
 # nnviz — Neural Network Visualiser
 
+[![PyPI](https://img.shields.io/pypi/v/nnviz-live.svg)](https://pypi.org/project/nnviz-live/)
+[![Python versions](https://img.shields.io/pypi/pyversions/nnviz-live.svg)](https://pypi.org/project/nnviz-live/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
 Live, real-time visualisation of PyTorch model training.  Watch weights update,
 see predictions change, and understand what your network is learning — frame by frame.
 
-![nnviz screenshot](docs/screenshot.png)
+![nnviz demo — classification](docs/demo-screenshot2.png)
+
+*Multi-class text classification — watch the network weigh evidence toward each label in real time.*
+
+![nnviz demo — regression style output](docs/demo-screenshot.png)
+
+*Same visualiser, different task — severity classification with live confidence bars.*
+
+**[View on PyPI →](https://pypi.org/project/nnviz-live/)**
 
 ---
 
 ## Install
 
 ```bash
-pip install pygame torch numpy pandas scikit-learn
-# then clone or copy the nnviz/ folder into your project
+pip install nnviz-live
 ```
 
-_(PyPI release coming soon — for now install from source.)_
+Need the example scripts too (they use pandas / scikit-learn)?
+
+```bash
+pip install "nnviz-live[examples]"
+```
 
 ---
 
@@ -41,6 +56,16 @@ viz = Visualizer(
     class_names  = [str(i) for i in range(10)],
 )
 viz.run(model, loader, nn.CrossEntropyLoss(), optim.Adam(model.parameters()))
+```
+
+### Use it on any dataset
+
+```python
+viz = Visualizer(
+    input_shape=None,           # None for tabular, (H, W) for images
+    class_names=["cat", "dog"], # your label names
+)
+viz.run(model, your_loader, criterion, optimizer)
 ```
 
 ---
@@ -71,26 +96,21 @@ viz.run(model, loader, nn.CrossEntropyLoss(), optim.Adam(model.parameters()))
 
 ## What you see
 
-```
-┌──────────────┬─────────────┬────────────────────────────────────────┐
-│  Info panel  │  Pixel grid │         Network diagram                │
-│              │  (input)    │                                        │
-│  ● TRAIN     │  ██░░██░░   │  ○─────○──────○──────○  ← output      │
-│  Epoch  3    │  ░░████░░   │  ○  ╲  ○  ╲   ○  ╲   ○               │
-│  Batch  142  │  ░░░░░░░░   │  ○  ╱  ○  ╱   ○  ╱   ○               │
-│  Loss 0.312  │  ██░░░░██   │  ○─────○──────○──────○                │
-│  Acc  88.3%  │             │                                        │
-│              │             │  Blue lines = positive weights         │
-│  Pred: 7     │             │  Red  lines = negative weights         │
-│  True: 7 ✓  │             │  Brightness = magnitude                │
-└──────────────┴─────────────┴────────────────────────────────────────┘
-```
+![nnviz layout — info panel, pixel grid, network diagram](docs/demo-screenshot2.png)
 
-**Left panel** — live stats: mode, epoch, batch count, loss, accuracy, current prediction vs target.
+**Left panel** — live stats: mode, epoch, batch count, loss, accuracy, current prediction vs target, and a live loss curve.
 
 **Pixel grid** — the first sample of each batch, rendered as a greyscale image (or a square grid for tabular data).
 
 **Network diagram** — every inter-layer connection coloured by weight sign and magnitude.  Blue = positive, red = negative, dark = near-zero (hidden so the display stays readable).  The highest-confidence output neuron glows red; others stay green.
+
+---
+
+## Demo video
+
+[Watch a full training run](docs/demo-video.mp4)
+
+*(GitHub doesn't preview `.mp4` inline in READMEs — click through to download/play, or drag the file into a GitHub PR/issue comment box to get an embeddable player link.)*
 
 ---
 
@@ -117,11 +137,11 @@ python examples/iris_example.py    # Iris flowers, tabular
 
 ## Roadmap
 
-- [ ] Loss curve graph panel
+- [x] Loss curve graph panel
 - [ ] Save / load checkpoint from UI
 - [ ] Activation heatmap overlay
 - [ ] Multi-label classification support
-- [ ] PyPI release
+- [x] PyPI release
 
 ---
 
